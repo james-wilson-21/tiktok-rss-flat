@@ -35,7 +35,7 @@ with open('subscriptions.csv') as f:
         updated=None
 
         for tiktok in api.user(username=user).videos(count=count):
-            fe = fg.add_entry(0)
+            fe = fg.add_entry().insert(0)
             link = "https://tiktok.com/@" + user + "/video/" + tiktok.id
             fe.id(link)
             ts = datetime.fromtimestamp(tiktok.as_dict['createTime'], timezone.utc)
@@ -48,8 +48,6 @@ with open('subscriptions.csv') as f:
 
         fg.updated(updated)
         newFile = 'rss/' + user + '.xml'
-        # tree = ET.parse(newFile)
-        # root = tree.getroot()
         fg.atom_file(newFile, pretty=True) # Write the RSS feed to a file
 
 
