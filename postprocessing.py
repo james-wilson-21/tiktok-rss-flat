@@ -2,6 +2,7 @@ from TikTokApi import TikTokApi
 import csv
 from feedgen.feed import FeedGenerator
 from datetime import datetime, timezone
+import xml.etree.ElementTree as ET
 
 # Normal GitHub Pages URL
 ghPagesURL = "https://james-wilson-21.github.io/tiktok-rss-flat/"
@@ -34,7 +35,7 @@ with open('subscriptions.csv') as f:
         updated=None
 
         for tiktok in api.user(username=user).videos(count=count):
-            fe = fg.add_entry()
+            fe = fg.add_entry(0)
             link = "https://tiktok.com/@" + user + "/video/" + tiktok.id
             fe.id(link)
             ts = datetime.fromtimestamp(tiktok.as_dict['createTime'], timezone.utc)
@@ -46,5 +47,9 @@ with open('subscriptions.csv') as f:
             fe.description("<img src='" + tiktok.as_dict['video']['cover'] + "' />")
 
         fg.updated(updated)
+        newFile = 'rss/' + user + '.xml'
+        # tree = ET.parse(newFile)
+        # root = tree.getroot()
+        fg.atom_file(newFile, pretty=True) # Write the RSS feed to a file
 
-        fg.atom_file('rss/' + user + '.xml', pretty=True) # Write the RSS feed to a file
+
