@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://www.tiktok.com/@rhiannon.cunningham</id>
-  <title>rhiannon.cunningham TikTok</title>
+  <title>@rhiannon.cunningham TikTok</title>
   <updated>2022-02-14T13:49:51+00:00</updated>
   <author>
     <name>James Wilson</name>
@@ -11,7 +11,7 @@
   <link href="https://james-wilson-21.github.io/tiktok-rss-flat/rss/rhiannon.cunningham.xml" rel="self"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator>
   <logo>https://james-wilson-21.github.io/tiktok-rss-flat/tiktok-rss.png</logo>
-  <subtitle>OK Boomer, all the latest TikToks from rhiannon.cunningham</subtitle>
+  <subtitle>Latest TikToks from rhiannon.cunningham</subtitle>
   <entry>
     <id>https://tiktok.com/@rhiannon.cunningham/video/6929507446260075782</id>
     <title>the fact i used to work 30 hrs a week at kfc when i was 14-15 makes me siCK #aussie #australian #aussielife #aussieintheuk #fyp #foryoupage #uklife</title>

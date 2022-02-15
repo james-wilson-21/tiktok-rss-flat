@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://www.tiktok.com/@therockfm</id>
-  <title>therockfm TikTok</title>
+  <title>@therockfm TikTok</title>
   <updated>2022-02-15T01:30:57+00:00</updated>
   <author>
     <name>James Wilson</name>
@@ -11,7 +11,7 @@
   <link href="https://james-wilson-21.github.io/tiktok-rss-flat/rss/therockfm.xml" rel="self"/>
   <generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator>
   <logo>https://james-wilson-21.github.io/tiktok-rss-flat/tiktok-rss.png</logo>
-  <subtitle>OK Boomer, all the latest TikToks from therockfm</subtitle>
+  <subtitle>Latest TikToks from therockfm</subtitle>
   <entry>
     <id>https://tiktok.com/@therockfm/video/7023975346861018370</id>
     <title>Real quality radio here 👃#ForYou #Fyp #NZRadio</title>
