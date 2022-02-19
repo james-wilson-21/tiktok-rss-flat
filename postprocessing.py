@@ -1,5 +1,8 @@
 from TikTokApi import TikTokApi
 import csv
+import xml.etree.ElementTree as ET
+import collections
+
 from feedgen.feed import FeedGenerator
 from datetime import datetime, timezone
 
@@ -47,7 +50,20 @@ with open('subscriptions.csv') as f:
             fe.description("<img src='" + tiktok.as_dict['video']['cover'] + "' />")
 
         fg.updated(updated)
+        newFile = 'rss/' + user + '.xml'
 
-        fg.atom_file('rss/' + user + '.xml', pretty=True) # Write the RSS feed to a file
+        # Attempt to sort the xml file
+        entry = {}
+        root = ET.parse(newFile).getroot()
+
+        for type_tag in root.findall('feed/entry'):
+            entry[type_tag.attrib['published']] = type_tag.find('entry').text
+        
+        sortedentry = collections.OrderedDict(sorted(entry.items()))
+        sortedentrylist = []
+        for k, v in sortedentry.items():
+            sortedentrylist.insert(0, v)
+
+        fg.atom_file(newFile, pretty=True) # Write the RSS feed to a file
 
 
