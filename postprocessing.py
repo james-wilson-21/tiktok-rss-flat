@@ -61,8 +61,8 @@ with open('subscriptions.csv') as f:
         sortedentry = collections.OrderedDict(sorted(entry.items()))
         sortedentrylist = []
         for k, v in sortedentry.items():
-            sortedentrylist.append(v)
-            
+            sortedentrylist.insert(0, v)
+
         fg.atom_file(newFile, pretty=True) # Write the RSS feed to a file
 
 
