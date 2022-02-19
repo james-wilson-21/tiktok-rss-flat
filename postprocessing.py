@@ -38,7 +38,7 @@ with open('subscriptions.csv') as f:
         updated=None
 
         for tiktok in api.user(username=user).videos(count=count):
-            fe = fg.add_entry().insert(0)
+            fe = fg.add_entry()
             link = "https://tiktok.com/@" + user + "/video/" + tiktok.id
             fe.id(link)
             ts = datetime.fromtimestamp(tiktok.as_dict['createTime'], timezone.utc)
