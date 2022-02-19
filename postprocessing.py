@@ -37,7 +37,7 @@ with open('subscriptions.csv') as f:
         updated=None
 
         for tiktok in api.user(username=user).videos(count=count):
-            fe = fg.add_entry('prepend')
+            fe = fg.add_entry()
             link = "https://tiktok.com/@" + user + "/video/" + tiktok.id
             fe.id(link)
             ts = datetime.fromtimestamp(tiktok.as_dict['createTime'], timezone.utc)
@@ -52,16 +52,16 @@ with open('subscriptions.csv') as f:
         newFile = 'rss/' + user + '.xml'
 
         # # Attempt to sort the xml file
-        # entry = {}
-        # root = ET.parse(newFile).getroot()
+        entry = {}
+        root = ET.parse(newFile).getroot()
 
-        # for type_tag in root.findall('feed/entry'):
-        #     entry[type_tag.attrib['published']] = type_tag.find('entry').text
+        for type_tag in root.findall('feed/entry'):
+            entry[type_tag.attrib['published']] = type_tag.find('entry').text
         
-        # sortedentry = collections.OrderedDict(sorted(entry.items()))
-        # sortedentrylist = []
-        # for k, v in sortedentry.items():
-        #     sortedentrylist.insert(0, v)
+        sortedentry = collections.OrderedDict(sorted(entry.items()))
+        sortedentrylist = []
+        for k, v in sortedentry.items():
+            sortedentrylist.insert(0, v)
 
         fg.atom_file(newFile, pretty=True) # Write the RSS feed to a file
 
