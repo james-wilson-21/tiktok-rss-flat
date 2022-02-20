@@ -1,10 +1,7 @@
 from TikTokApi import TikTokApi
 import csv
-import lxml.etree as ET
-
 from feedgen.feed import FeedGenerator
 from datetime import datetime, timezone
-
 
 # Normal GitHub Pages URL
 ghPagesURL = "https://james-wilson-21.github.io/tiktok-rss-flat/"
@@ -37,7 +34,7 @@ with open('subscriptions.csv') as f:
         updated=None
 
         for tiktok in api.user(username=user).videos(count=count):
-            fe = fg.add_entry(0)
+            fe = fg.add_entry()
             link = "https://tiktok.com/@" + user + "/video/" + tiktok.id
             fe.id(link)
             ts = datetime.fromtimestamp(tiktok.as_dict['createTime'], timezone.utc)
@@ -49,18 +46,5 @@ with open('subscriptions.csv') as f:
             fe.description("<img src='" + tiktok.as_dict['video']['cover'] + "' />")
 
         fg.updated(updated)
-        newFile = 'rss/' + user + '.xml'
 
-        # Attempt to sort the xml file
-
-        # for type_tag in root.findall('feed/entry'):
-        #     entry[type_tag.attrib['published']] = type_tag.find('entry').text
-        
-        # sortedentry = collections.OrderedDict(sorted(entry.items()))
-        # sortedentrylist = []
-        # for k, v in sortedentry.items():
-        #     sortedentrylist.insert(0, v)
-
-        fg.atom_file(newFile, pretty=True) # Write the RSS feed to a file
-
-
+        fg.atom_file('rss/' + user + '.xml', pretty=True) # Write the RSS feed to a file
